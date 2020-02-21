@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { ApolloProvider } from '@apollo/react-hooks';
 import client from './client';
 import {Typography, Container, makeStyles} from "@material-ui/core";
@@ -15,12 +15,13 @@ const useStyles = makeStyles({
 
 const App = () => {
   const classes = useStyles();
+  const [searchTerm, setSearchTerm] = useState('');
   return (
     <ApolloProvider client={client}>
       <Container maxWidth={'sm'}>
         <Typography variant={'h3'} className={classes.title}>GraphQL Github Client</Typography>
-        <SearchBar />
-        <RepositoryList />
+        <SearchBar value={searchTerm} onChange={setSearchTerm}/>
+        <RepositoryList searchTerm={searchTerm}/>
       </Container>
     </ApolloProvider>
   );
