@@ -1,4 +1,6 @@
 import React from 'react';
+import { ApolloProvider } from '@apollo/react-hooks';
+import client from './client';
 import {Typography, Container, makeStyles} from "@material-ui/core";
 import RepositoryList from "./RepositoryList";
 import SearchBar from "./SearchBar";
@@ -14,11 +16,13 @@ const useStyles = makeStyles({
 const App = () => {
   const classes = useStyles();
   return (
-    <Container maxWidth={'sm'}>
-      <Typography variant={'h3'} className={classes.title}>GraphQL Github Client</Typography>
-      <SearchBar/>
-      <RepositoryList/>
-    </Container>
+    <ApolloProvider client={client}>
+      <Container maxWidth={'sm'}>
+        <Typography variant={'h3'} className={classes.title}>GraphQL Github Client</Typography>
+        <SearchBar />
+        <RepositoryList />
+      </Container>
+    </ApolloProvider>
   );
 };
 
