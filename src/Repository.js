@@ -1,4 +1,5 @@
 import React from 'react';
+import IssueList from './IssueList';
 import {
   ExpansionPanel,
   ExpansionPanelSummary,
@@ -6,7 +7,7 @@ import {
   Typography,
   Chip,
   makeStyles
-} from "@material-ui/core";
+} from '@material-ui/core';
 import StarIcon from '@material-ui/icons/Star';
 import PeopleIcon from '@material-ui/icons/People';
 
@@ -30,7 +31,6 @@ const useStyles = makeStyles({
 
 const Repository = ({repo, expanded, onToggled}) => {
   const {node: {name, descriptionHTML, owner: {login}, stargazers: {totalCount: totalStarCount}}} = repo;
-  console.log(repo);
   const classes = useStyles();
   return (
     <ExpansionPanel
@@ -53,7 +53,7 @@ const Repository = ({repo, expanded, onToggled}) => {
         />
       </ExpansionPanelSummary>
       <ExpansionPanelDetails>
-        Issues here!
+        {expanded && (<IssueList repoName={name} repoOwner={login}/>)}
       </ExpansionPanelDetails>
     </ExpansionPanel>
   );

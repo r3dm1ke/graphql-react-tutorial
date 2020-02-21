@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import {useQuery} from "@apollo/react-hooks";
-import {Typography, makeStyles, CircularProgress} from "@material-ui/core";
-import {useDebounce} from "use-debounce";
-import {SEARCH_FOR_REPOS} from "./queries";
-import Repository from "./Repository";
+import {useQuery} from '@apollo/react-hooks';
+import {Typography, makeStyles, CircularProgress} from '@material-ui/core';
+import {useDebounce} from 'use-debounce';
+import {SEARCH_FOR_REPOS} from './queries';
+import Repository from './Repository';
 
 const useStyles = makeStyles({
   note: {
